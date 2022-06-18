@@ -10,6 +10,7 @@ import com.example.entrevuespringboot.domaine.service.FilmService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Optional;
@@ -28,6 +29,7 @@ public class FilmServiceImpl implements FilmService {
     }
 
     @Override
+    @Transactional
     public Film creerFilm(FilmInRessource filmInRessource) {
         Film film = initialiserFilmDetails(filmInRessource);
         film.setActeurs(initialiserActeursSet(filmInRessource.getActeurs()));
